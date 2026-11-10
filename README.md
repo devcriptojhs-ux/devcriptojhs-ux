@@ -60,5 +60,5 @@ Cada quadradinho é uma contribuição. Cada contribuição, um café.
 <br><br>
 
 <div align="center">
-  <a href="https://www.linkedin.com/in/joaohenrique-sampaio-defreitas-3905a9159"><img src="assets/btn-linkedin.svg" width="340" alt="Conectar no LinkedIn"></a>
+  <a href="https://www.linkedin.com/in/joao-henrique-sampaio-de-freitas-3905a9159/"><img src="assets/btn-linkedin.svg" width="340" alt="Conectar no LinkedIn"></a>
 </div>
