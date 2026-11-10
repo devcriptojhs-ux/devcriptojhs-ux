@@ -1,0 +1,48 @@
+name: Café no quadro de contribuições
+
+on:
+  schedule:
+    - cron: "0 3 * * *" # todo dia à meia-noite, horário de Brasília
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/**"
+      - ".github/workflows/coffee.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: coffee
+  cancel-in-progress: true
+
+jobs:
+  brew:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Gerar os SVGs do café
+        run: python scripts/coffee_contrib.py --user "$OWNER" --out dist
+        env:
+          OWNER: ${{ github.repository_owner }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publicar na branch output
+        working-directory: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          git init -q -b output
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -q -m "☕ atualiza o café ($(date -u +%F))"
+          git push -q --force "https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}.git" output
