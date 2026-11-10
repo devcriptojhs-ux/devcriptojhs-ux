@@ -52,26 +52,26 @@ def u(x, y, w, h, fill, extra=""):
     return rect(x * P, y * P, w * P, h * P, fill, extra)
 
 
-DEV = [  # personagem sentado, de lado, olhando para o monitor (14x24)
-    "....HHhhHH....",
-    "...HHHhhHHHH..",
-    "..HHHHhhHHHHH.",
-    "..HHHHhhHHHss.",
-    "..HHHhhhhsggg.",
-    "..HHHhhhhsgkgs",
-    "..HHHhhhhssss.",
-    "...HHHHsssss..",
-    "....HHSSsss...",
-    "......SSs.....",
-    "....BBBBBB....",
-    "...BBBBBBBB...",
-    "...BBBBBBbbbss",
-    "...BBBBBBB....",
-    "...BBBBBBB....",
-    "...bbbbbbb....",
+DEV = [  # o João sentado, de lado, olhando para o monitor (14x24)
+    "....H.HH.H....",  # cachos
+    "...HHHhHHHHH..",
+    "..HHhHHHhHHHH.",
+    "..HHHHHhHHHHs.",
+    "..HHHHsssssss.",
+    "..HHHSssssksss",  # orelha, olho, nariz
+    "..HHHSsssssdd.",  # bigode
+    "...HddddddwwS.",  # barba + sorriso
+    "....dddddddd..",
+    ".....dddddd...",
+    ".....sSs......",
+    "....TTTTTT....",  # camiseta branca
+    "...TTTTTTTtsss",  # braço até o teclado
+    "...TTTTTTT....",
+    "...TTTTTTT....",
+    "...TTTTTTt....",
+    "...ttttttt....",
     "...PPPPPPPPP..",
     "...PPPPPPPPPP.",
-    "..........PP..",
     "..........PP..",
     "..........PP..",
     "..........PP..",
@@ -79,18 +79,18 @@ DEV = [  # personagem sentado, de lado, olhando para o monitor (14x24)
     "..........KKKK",
 ]
 DEV_PAL = {
-    "H": "#4a3020", "h": PINK, "s": "#d39a6a", "S": "#b07a50", "g": "#dfe6f0",
-    "k": "#111111", "B": BLUE, "b": "#1a3399", "P": "#2d3142", "K": "#6b4f3a",
+    "H": "#2e211a", "h": "#4d3a2d", "s": "#b5774f", "S": "#94603c", "d": "#241913",
+    "k": "#111111", "w": "#ffffff", "T": "#eef1f5", "t": "#c9d0da", "P": "#34466b", "K": "#8a8f98",
 }
 
-MUG = [
-    "wccw..",
-    "wwwSww",
-    "wwwS.w",
-    "wwwSww",
-    ".wwS..",
+MUG = [  # caneca preta com a borda branca, igual à da foto
+    "icci..",
+    "mMMMMM",
+    "mMMM.M",
+    "mMMMMM",
+    ".mMM..",
 ]
-MUG_PAL = {"w": "#f2f2f2", "S": "#c9cfd8", "c": "#6b4226"}
+MUG_PAL = {"i": "#f2f2f2", "c": "#6b4226", "M": "#1e1e24", "m": "#3c3c48"}
 
 
 def build_banner() -> str:
@@ -116,8 +116,8 @@ def build_banner() -> str:
         body.append(u(nx, ny, 3, 3, c))
 
     # cadeira (encosto e assento atrás do personagem)
-    body += [u(147, 33, 2, 13, "#3d4466"), u(148, 46, 9, 2, "#3d4466"),
-             u(151, 48, 2, 3, "#2b3150"), u(148, 51, 8, 1, "#2b3150")]
+    body += [u(147, 34, 2, 13, "#3d4466"), u(148, 47, 9, 2, "#3d4466"),
+             u(151, 49, 2, 2, "#2b3150"), u(148, 51, 8, 1, "#2b3150")]
 
     # mesa, teclado e caneca
     body += [
@@ -174,8 +174,8 @@ def build_banner() -> str:
     return svg_doc(
         W, H, "".join(body), css,
         title="João Henrique — Gestão de Projetos, Produto e Automação",
-        desc="Cena em pixel art: um dev de fone de ouvido trabalha à noite num monitor com um "
-             "quadro kanban, ao lado de uma caneca de café fumegante.",
+        desc="Cena em pixel art: o João, de cabelo cacheado, barba e camiseta branca, trabalha à "
+             "noite num monitor com um quadro kanban, ao lado de uma caneca preta de café fumegante.",
     )
 
 

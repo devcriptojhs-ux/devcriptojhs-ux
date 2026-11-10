@@ -125,14 +125,16 @@ GRID_H = ROWS * PITCH - GAP
 MUG_S = 4  # escala da caneca grande
 MUG_IN = 8  # níveis de enchimento (linhas internas da caneca)
 
-BARISTA_TOP = ["..hhhh...", ".hhhhhh..", ".hhssss..", ".hsksks..", "..ssss...",
-               ".BBaaBBcc", ".Baaaasmm", "..aaaa..."]
+# O João: cabelo cacheado, barba, sorriso, camiseta branca e caneca preta.
+BARISTA_TOP = [".h.hh.h..", ".hhhhhh..", ".hhssss..", ".hsksks..", ".ddwwdd..",
+               "..dddd.ii", ".TTTTTsMM", ".TTTTT.MM", "..tttt..."]
 WALK_A = BARISTA_TOP + [".PP..PP..", ".KK...KK."]
 WALK_B = BARISTA_TOP + ["..PPPP...", "..KKKK..."]
-SIPPING = ["..hhhh...", ".hhhhhh..", ".hhssss..", ".hsksscc.", "..ssssmm.",
-           ".BBaaBs..", ".BaaaaB..", "..aaaa...", "..PP.PP..", "..KK.KK.."]
-BARISTA_PAL = {"h": "#5a3a22", "s": "#e0a878", "k": "#1a1a1a", "B": "#2244cc",
-               "a": "#1f6f6b", "c": "#4a2c17", "m": "#e06c75", "P": "#2d3142", "K": "#1a1a1a"}
+SIPPING = [".h.hh.h..", ".hhhhhh..", ".hhssss..", ".hsksks..", ".dddddii.",
+           "..ddddMM.", ".TTTTsMM.", ".TTTTT...", "..tttt...", "..PP.PP..", "..KK.KK.."]
+BARISTA_PAL = {"h": "#3b2a20", "s": "#b5774f", "k": "#1a1a1a", "d": "#2a1d16", "w": "#ffffff",
+               "T": "#eef1f5", "t": "#c9d0da", "M": "#1e1e24", "i": "#f2f2f2",
+               "P": "#34466b", "K": "#8a8f98"}
 
 MUG = [
     ".oooooooooo...",
@@ -158,7 +160,7 @@ def cell_xy(c: float, r: float) -> tuple[float, float]:
 
 def walker_xy(c: float, r: float) -> tuple[float, float]:
     x, y = cell_xy(c, r)
-    return x - 4, y - 7
+    return x - 4, y - 9  # sprite de 22 px de altura, pés logo abaixo do quadrado
 
 
 def fmt_int(n: int) -> str:
